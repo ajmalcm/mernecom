@@ -12,6 +12,8 @@ import StackedLineChartOutlinedIcon from "@mui/icons-material/StackedLineChartOu
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
+import CategoryOutlinedIcon from '@mui/icons-material/CategoryOutlined';
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import Dicon from "../../imgs/dicon.png";
 import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from '@mui/icons-material/Menu';
@@ -22,31 +24,33 @@ const Sidebar = () => {
     const sidebarContents = [
         {
           header: "Dashboard",
-          sub: [{ subIcon: <ShoppingBagOutlinedIcon />, subtitle: "Ecommerce" }],
+          sub: [{ subIcon: <ShoppingBagOutlinedIcon />, subtitle: "Ecommerce",link:"/admin/ecommerce" }],
         },
         {
           header: "Pages",
           sub: [
-            { subIcon: <ShoppingCartOutlinedIcon />, subtitle: "Orders" },
-            { subIcon: <PeopleAltOutlinedIcon />, subtitle: "Users" },
+            { subIcon: <CategoryOutlinedIcon />, subtitle: "All Products",link:"/admin/allproducts" },
+            { subIcon: <AddOutlinedIcon />, subtitle: "Create Products",link:"/admin/createproducts" },
+            { subIcon: <ShoppingCartOutlinedIcon />, subtitle: "Orders",link:"/admin/orders" },
+            { subIcon: <PeopleAltOutlinedIcon />, subtitle: "Users",link:"/admin/users" },
           ],
         },
         {
           header: "Apps",
           sub: [
-            { subIcon: <CalendarTodayOutlinedIcon />, subtitle: "Calendar" },
-            { subIcon: <ViewKanbanOutlinedIcon />, subtitle: "Kanban" },
-            { subIcon: <EditCalendarOutlinedIcon />, subtitle: "Editor" },
-            { subIcon: <FormatColorFillOutlinedIcon />, subtitle: "Color-picker" },
+            { subIcon: <CalendarTodayOutlinedIcon />, subtitle: "Calendar",link:"/admin/calender" },
+            { subIcon: <ViewKanbanOutlinedIcon />, subtitle: "Kanban",link:"/admin/kanban" },
+            { subIcon: <EditCalendarOutlinedIcon />, subtitle: "Editor",link:"/admin/editor" },
+            { subIcon: <FormatColorFillOutlinedIcon />, subtitle: "Color-picker",link:"/admin/colorpicker" },
           ],
         },
         {
           header: "Charts",
           sub: [
-            { subIcon: <StackedLineChartOutlinedIcon />, subtitle: "Line" },
-            { subIcon: <BarChartOutlinedIcon />, subtitle: "Bar" },
-            { subIcon: <TimelineOutlinedIcon />, subtitle: "Area" },
-            { subIcon: <PieChartOutlineOutlinedIcon />, subtitle: "Pie" },
+            { subIcon: <StackedLineChartOutlinedIcon />, subtitle: "Line",link:"/admin/line" },
+            { subIcon: <BarChartOutlinedIcon />, subtitle: "Bar",link:"/admin/bar" },
+            { subIcon: <TimelineOutlinedIcon />, subtitle: "Area",link:"/admin/area" },
+            { subIcon: <PieChartOutlineOutlinedIcon />, subtitle: "Pie",link:"/admin/pie" },
           ],
         },
       ];
@@ -85,7 +89,7 @@ const Sidebar = () => {
               </h4>
               {
                 item.sub.map((su,i)=>(
-                  <Link to={`/admin/${su.subtitle}`} className={`flex gap-4 max-[600px]:justify-center pl-6 max-[820px]:pl-2 py-2 cursor-pointer hover:bg-slate-300  hover:rounded-md transition-all duration-100 delay-75 ease-in-out ${su.subtitle===path?"bg-blue-500 text-white rounded-md":""}`} key={i}>
+                  <Link to={su.link} className={`flex gap-4 max-[600px]:justify-center pl-6 max-[820px]:pl-2 py-2 cursor-pointer hover:bg-slate-300  hover:rounded-md transition-all duration-100 delay-75 ease-in-out ${(su.subtitle.replace(/\s/g, '')).toLowerCase()===path?"bg-blue-500 text-white rounded-md":""}`} key={i}>
                 {su.subIcon}
                 <span className='max-[600px]:hidden'>{su.subtitle}</span>
               </Link>

@@ -12,7 +12,6 @@ const MyOrders = () => {
   const dispatch=useDispatch();
   const {user}=useSelector(state=>state.user);
   const {loading,error,orders}=useSelector(state=>state.myOrders);
-  const navigate=useNavigate();
   const columns=[
     {
       field:"id",

@@ -73,7 +73,7 @@ const UpdateProfile = () => {
         type: UPDATE_PROFILE_RESET,
       });
     }
-  }, [dispatch, error, isUpdated, user, navigate, isAuthenticated]);
+  }, [dispatch, error, isUpdated, user, navigate, isAuthenticated,updateData]);
 
   return (
     <>

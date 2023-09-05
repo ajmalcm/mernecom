@@ -96,12 +96,9 @@ function App() {
     isAuthenticated && <Route exact path='/order/:id' element={<OrderDetails/>}/>
   }
   {
-    isAuthenticated && <Route exact path='/admin/Ecommerce' element={<Dashboard/>}/>
+    isAuthenticated && user.role==="admin" && <Route exact path='/admin/ecommerce' element={<Dashboard/>}/>
   }
   
-  {
-    isAuthenticated && <Route exact path='/admin/Orders' element={<Orders/>}/>
-  }
 </Routes>
   <Footer/>
     </Router>
