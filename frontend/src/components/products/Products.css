@@ -1,0 +1,31 @@
+/* .productsHeading{
+    
+} */
+.products{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding:1vmax
+}
+
+.filterBox,.categoryTree,.ratingsFilter{
+    margin-bottom: 3%;
+}
+
+.ratingsFilter{
+    margin-top: 5%;
+}
+
+@media (max-width:920px)
+{
+    .filterBox{
+        margin-top: 28px;
+    }
+    .filterBox,.ratingsFilter{
+        padding:20px;
+    }
+}
+
+
+

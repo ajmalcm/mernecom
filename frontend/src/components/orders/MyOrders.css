@@ -1,0 +1,12 @@
+.MuiDataGrid-columnHeader{
+    background-color: #157ed2;
+    padding:1vamx !important;
+}
+.MuiDataGrid-columnHeader div{
+    color:white;
+    font:500 14px "barlow" !important 
+}
+
+.MuiDataGrid-iconSeparator{
+    display: block !important;
+}

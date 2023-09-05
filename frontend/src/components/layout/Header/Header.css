@@ -1,0 +1,175 @@
+.headerContainer{
+    background-color: #fdd922;
+}
+.headerContainer a{
+    color:#fff;
+}
+.headerContainer a:hover{
+    color:#fff;
+}
+
+.navHeader{
+    background-color: #157ed2;
+    font-family: 'Barlow', sans-serif;
+    color:white;
+    font-size: 14px;
+    padding:1% 4% 0 4%;
+}
+
+.cnl{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cnl > div{
+    display:flex;
+    gap:50%;
+}
+
+.ul{
+    display: flex;
+    gap:10px;
+    font-weight: 100;
+}
+.ul > li{
+    border-right: 1px solid white;
+    padding-right: 10px;
+}
+.lism{
+    display:none;
+}
+
+.navMid{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 25px 0;
+}
+
+.navMid .imgdiv {
+    flex:0.2
+}
+.navMid .imgdiv img{
+    width:100%;
+}
+
+.categoryContainer{
+    font-size: 14px;
+    color:#191818;
+    border:none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    flex:0.5;
+}
+
+.categoryContainer >select{
+    padding:4.18% 2%;
+}
+.categoryContainer .search{
+    width:100%;
+    padding: 4% 2%;
+    border:none;
+    outline:none;
+}
+
+.categoryContainer button{
+    border:none;
+    outline:none;
+    background-color: #fdd922;
+    padding:3.79% 4%;
+    color:black
+}
+
+ .midRight{
+    display: flex;
+    justify-content:center;
+    gap:3%;
+    align-items: center;
+    flex:0.2;
+}
+.midRight >div>div:nth-child(odd){
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+}
+.midRight>div>div:nth-child(even){
+font-size: larger;
+font-weight: 600;
+}
+
+.navBottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: larger;
+    padding: 12px 0;
+    border-top:1px solid #dad3d3
+}
+
+.navBottom ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:35px;
+    font-weight: 500;
+    font-size: 18px;
+    margin: 0%;
+}
+
+.navBottom span{
+    font-family: 'Barlow', sans-serif;
+    color: #fdd922;
+    font-weight: 500;
+}
+
+
+.speedDial{
+    position:fixed;
+    top:1vmax;
+    right:3vmax;
+}
+
+.speedDialIcon{
+    width:56px;
+    height:56px;
+    border-radius: 100%;
+}
+
+/* responsive */
+
+/* medium screen devices 820 and for small devices477 */
+@media (max-width:860px)
+{
+    .lilg{
+        display:none;
+    }
+
+    
+    .lism{
+        display:block;
+    }
+    .midRight{
+        display:none;
+    }
+    .categoryContainer{
+        justify-content: center;
+    }
+    .categoryContainer > select{
+        display: none;
+    }
+
+    .navBottom{
+        justify-content: center;
+    }
+
+    .navBottom span{
+        display:none;
+    }
+
+    .navBottom .lisp{
+        display:none;
+    }
+
+
+}

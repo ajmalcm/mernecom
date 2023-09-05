@@ -1,0 +1,10 @@
+.App{
+    background-color: #f3f3f3;
+}
+.App a{
+    color:black;
+    text-decoration: none;
+}
+.App a:hover{
+    color:black
+}

@@ -1,0 +1,324 @@
+.sProductDetailContainer{
+    width:100%;
+    display:flex;
+    /* justify-content: space-between; */
+    gap:4%;
+    background-color: #f3f3f3;
+    padding:2% 8%;
+}
+
+.sProductDetailContainer .islider{
+    /* flex:0.5; */
+    width: 600px;
+    /* width:100%; */
+}
+.sProductDetailContainer .islider img{
+    height: 600px;
+    width: 600px;
+    object-fit: cover;
+}
+
+
+
+.sProductDetail{
+    /* flex:0.5; */
+    display: flex;
+    flex-direction: column;
+    flex:1;
+}
+
+.sProductDetail .sProductName{
+    font-weight: 600;
+    letter-spacing: normal;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+.sProductDetail .spid{
+    color: #aaaaaa;
+    font-size: 16px;
+    font-family: 'Barlow', sans-serif;
+   margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+
+}
+
+.sProductDetail .sRating{
+    display:flex;
+    align-items: center;
+    gap:4%;
+    justify-content: flex-start;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+
+}
+.sProductDetail .sRating .rev{
+    color: #aaaaaa;
+    font-size: 13px;
+    font-family: 'Barlow', sans-serif;
+}
+.sProductDetail .avl{
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+}
+.sProductDetail .description{
+    padding-bottom: 40px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    /* width:90%; */
+    /* height: 30%; */
+    line-height: 20px;
+    color: #666666;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+.sProductDetail .description p{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+.sProductDetail .priceCnt{
+    display: flex;
+    align-items: center;
+    gap:5%;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    font-family: 'Barlow', sans-serif;
+
+}
+.sProductDetail .priceCnt .pDiscount{
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 50px;
+    color: #ff7878;
+}
+.sProductDetail .priceCnt .noDiscount
+{
+    color: #aaa;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 50px;
+}
+.addToCartSection{
+    display:flex;
+    gap:4%;
+    /* justify-content: space-around; */
+    align-items: center;
+    font-family: 'Barlow', sans-serif;
+    margin-bottom: 30px;
+}
+
+.qty input{
+    border:none;
+    padding:12px 10px;
+    /* margin-left: 15px; */
+    width:5vmax;
+    text-align: center;
+    outline:none;
+    border:1px solid #ddd;
+    /* border-radius: 7px; */
+}
+.qty .plusminus{
+    padding:12px 10px;
+    border:1px solid #ddd;
+    background-color: #333;
+    color:#fff;
+    cursor: pointer;
+}
+.qty span:first-child{
+    margin-right: 12px;
+}
+
+.addToCartSection button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:10px;
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-size: 18px;
+    background-color: #fdd922;
+    color: #333;
+}
+.sProductDetail .submitReview{
+    padding: 12px 25px;
+    font-size: 18px;
+    line-height: 22px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 400;
+    font-family: 'Barlow', sans-serif;
+    background-color: #157ed2;
+    width:30%;
+}
+
+
+/* .allReviewsContainer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+} */
+
+.reviewsHeading{
+    color:#000000be;
+    font:500 1.4vmax 'Barlow', sans-serif;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0, 0.226);
+    padding:1vmax;
+    width:20vmax;
+    margin:auto;
+    margin-bottom: 4vmax;
+}
+.allReviewsContainer{
+    display: flex;
+    overflow: auto;
+    justify-content: center;
+}
+
+.allReviews{
+    flex:none;
+    box-shadow: 0 0 5px rgba(0,0,0, 0.226);
+    border:1px solid rgba(56,56,56,0.116);
+    width:30vmax;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1vmax;
+    padding:3vmax;
+}
+.pfpc{
+    width:5vmax;
+}
+.pfpc>img{
+    border-radius: 50%;
+    width:100%;
+    object-fit: contain;
+}
+
+.allReviews p{
+    color: rgba(0,0,0,0.836);
+    font:600 0.9vmax 'Barlow', sans-serif;
+}
+
+.allReviews .cmnt{
+    color: rgba(0,0,0,0.445);
+    font:300 0.8vmax cursive;
+}
+
+.noReviews{
+    font:400 1.3vmax 'Barlow', sans-serif;
+    text-align: center;
+    color:rgba(0,0,0,0.548);
+}
+
+.submitDialog{
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.submitDialogTextArea{
+    border:1px solid rgba(0,0,0,0.082);
+    margin: 1vmax 0;
+    outline:none;
+    padding: 1rem;
+    font:300 1rem "barlow";
+}
+
+/* 477 for small 820 for medium */
+
+/* responsive designing */
+
+@media (max-width:820px)
+{
+    .sProductDetailContainer{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .sProductDetail{
+       padding:5% 8%;
+       width:90%;
+    }
+    .sProductDetailContainer .islider{
+        width:500px;
+    }
+    .sProductDetailContainer .islider img{
+        height: 500px;
+        width: 500px;
+        object-fit: cover;
+    }
+    .sProductDetail .submitReview{
+        width:40%;
+    padding:8px 16px;
+    }
+}
+
+@media (max-width:630px){
+    .sProductDetailContainer{
+        padding:2% 2%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .sProductDetail{
+        padding:2% 3%;
+        width:100%;
+     }
+
+    .sProductDetailContainer .islider{
+        width:100%;
+    }
+    .sProductDetailContainer .islider img{
+        /* height: 300px; */
+        width:100%;
+        object-fit: cover;
+    }
+    .sProductDetail .sProductName{
+        font-weight: 500;
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+
+    .sProductDetail .avl{
+        margin-bottom: 20px;
+    
+    }
+    .sProductDetail .description{
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+
+    .sProductDetail .priceCnt{
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+    }
+
+    .sProductDetail .priceCnt .pDiscount{
+        font-size: 24px;
+        font-weight: 500;
+    }
+    .sProductDetail .priceCnt .noDiscount
+    {
+        font-size: 20px;
+        font-weight: 300;
+    }
+
+    .addToCartSection button, .addToCartSection input,.plusminus{
+        font-size: 16px;
+        padding:6px 12px;
+    }
+
+    .sProductDetail .submitReview{
+        width:40%;
+    padding:7px 11px;
+    font-size: 14px;
+
+    }
+}
+
