@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import Sidebar from "./Sidebar";
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
@@ -8,16 +8,20 @@ import CachedRoundedIcon from '@mui/icons-material/CachedRounded';
 import { Doughnut,Line} from "react-chartjs-2";
 import {CategoryScale} from 'chart.js'; 
 import Chart from 'chart.js/auto';
+import { useDispatch, useSelector } from "react-redux";
+import { getAdminProducts } from "../redux/actions/productAction";
 const Dashboard = () => {
   
   Chart.register(CategoryScale);
+  const dispatch=useDispatch();
+  const {products}=useSelector(state=>state.products);
 
   const dashItems=[
-    {icon:<CurrencyRupeeIcon  fontSize="medium"/>,price:1233,text:"Earnings",colornbg:"text-red-500 bg-red-100"},
-    {icon:<PeopleAltOutlinedIcon fontSize="medium"/>,price:3322,text:"Users",colornbg:"text-green-500 bg-green-100"},
-    {icon:<CategoryOutlinedIcon fontSize="medium"/>,price:332244,text:"Products",colornbg:"text-blue-500 bg-blue-100"},
-    {icon:<SignalCellularAltRoundedIcon fontSize="medium"/>,price:54244,text:"Sales",colornbg:"text-orange-500 bg-orange-100"},
-    {icon:<CachedRoundedIcon fontSize="medium"/>,price:221221,text:"Refunds",colornbg:"text-violet-500 bg-violet-100"},
+    {icon:<CurrencyRupeeIcon  fontSize="medium"/>,price:`₹${1233}`,text:"Earnings",colornbg:"text-red-500 bg-red-100"},
+    {icon:<PeopleAltOutlinedIcon fontSize="medium"/>,price:` ${20}`,text:"Users",colornbg:"text-green-500 bg-green-100"},
+    {icon:<CategoryOutlinedIcon fontSize="medium"/>,price:` ${products.length}`,text:"Products",colornbg:"text-blue-500 bg-blue-100"},
+    // {icon:<SignalCellularAltRoundedIcon fontSize="medium"/>,price:`₹${6643}`,text:"Sales",colornbg:"text-orange-500 bg-orange-100"},
+    {icon:<CachedRoundedIcon fontSize="medium"/>,price:` ${10}`,text:"Orders",colornbg:"text-violet-500 bg-violet-100"},
   ]
 
   const lineState={
@@ -34,13 +38,23 @@ const Dashboard = () => {
     ]
   }
 
+  let outofStock=0;
+  products && products.forEach((item)=>{
+    if(item.stock===0)
+    outofStock+=1
+  })
+
+  useEffect(()=>{
+    dispatch(getAdminProducts())
+  },[dispatch])
+
   const doughtnutState={
     labels:["In Stock","Out Of Stock"],
     datasets:[
       {
         backgoundColor:["#157ed2","#fdd922"],
         hoverBackgroundColor:["#A3E3FA"],
-        data:[10,2],
+        data:[(products.length-outofStock),outofStock],
         tension:0.1
       }
 
@@ -61,7 +75,7 @@ const Dashboard = () => {
               {dashItems.map((item,i)=>(
                 <div className="flex flex-col h-[180px] w-[230px] justify-start font-barlow shadow-md rounded-lg pt-6 px-6 max-md:p-4 gap-2" key={i}>
                   <div className={`rounded-full  w-fit p-3 ${item.colornbg} mb-2`}>{item.icon}</div>
-                  <h5 className="mb-0 font-semibold text-xl">₹{item.price}</h5>
+                  <h5 className="mb-0 font-semibold text-xl">{item.price}</h5>
                   <span className="text-slate-400">{item.text}</span>
                 </div>
 

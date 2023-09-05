@@ -29,6 +29,7 @@ import MyOrders from './components/orders/MyOrders';
 import OrderDetails from './components/orders/OrderDetails';
 import Dashboard from './components/admin/Dashboard';
 import Orders from './components/admin/Orders';
+import AllProducts from './components/admin/AllProducts';
 function App() {
 
   const dispatch=useDispatch();
@@ -98,7 +99,9 @@ function App() {
   {
     isAuthenticated && user.role==="admin" && <Route exact path='/admin/ecommerce' element={<Dashboard/>}/>
   }
-  
+  {
+    isAuthenticated && user.role==="admin" && <Route exact path='/admin/allproducts' element={<AllProducts/>}/>
+  }
 </Routes>
   <Footer/>
     </Router>

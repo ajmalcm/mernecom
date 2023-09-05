@@ -72,7 +72,7 @@ const Sidebar = () => {
                 alt="Dash"
                 className="w-[78px] h-[78px] object-contain rounded-full max-md:w-[50px] max-[820px]:h-[50px]"
               />
-              <span className="text-2xl font-barlow font-bold tracking-widest pl-2 max-[820px]:p-0 max-[820px]:text-xl max-[600px]:hidden">
+              <span className="text-2xl font-barlow font-bold tracking-widest pl-2 max-[820px]:p-0 max-[820px]:text-xl max-[820px]:hidden">
                 DASH-B
               </span>
             </div>
@@ -102,7 +102,7 @@ const Sidebar = () => {
             
           </div>
         </div>
-        :<div className='pl-10 py-3 max-md:p-0'>
+        :<div className='pl-3 py-3 max-md:p-0'>
         <MenuIcon fontSize='large' onClick={()=>setSideOpen(!sideOpen)}/>
         </div>
     }

@@ -16,6 +16,24 @@ exports.createProducts = async (req, res, next) => {
     namedErrorHandler(err, res);
   }
 };
+
+  // getAll products for admin
+
+  exports.getAdminProducts=async (req,res,next)=>{
+    try{
+        const products=await Product.find();
+
+        res.status(200).json({
+          success:true,
+          products
+        })
+    }
+    catch(err)
+    {
+      namedErrorHandler(err,res)
+    }
+  }
+
 //getAllProducts
 exports.getAllProducts = async (req, res, next) => {
   try {
