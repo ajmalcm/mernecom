@@ -33,10 +33,10 @@ const productModal=new mongoose.Schema({
         type:String,
         required:[true,"Please select the category of the product."]
     },
-    size:{
-        type:String,
-        required:[true,"PLease select the size of the product."],
-    },
+    // size:{
+    //     type:String,
+    //     required:[true,"PLease select the size of the product."],
+    // },
     stock:{
         type:Number,
         required:[true,"Please enter the Number of stocks."],

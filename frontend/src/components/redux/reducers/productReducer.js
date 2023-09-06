@@ -1,4 +1,4 @@
-import { ALL_PRODUCT_REQUEST,ALL_PRODUCT_FAIL,ALL_PRODUCT_SUCCESS,CLEAR_ERRORS,PRODUCT_DETAIL_FAIL,PRODUCT_DETAIL_REQUEST,PRODUCT_DETAIL_SUCCESS,CREATE_REVIEW_FAIL,CREATE_REVIEW_REQUEST,CREATE_REVIEW_RESET,CREATE_REVIEW_SUCCESS,ADMIN_PRODUCT_REQUEST,ADMIN_PRODUCT_FAIL,ADMIN_PRODUCT_SUCCESS  } from "../constants/productConstant";
+import { ALL_PRODUCT_REQUEST,ALL_PRODUCT_FAIL,ALL_PRODUCT_SUCCESS,CLEAR_ERRORS,PRODUCT_DETAIL_FAIL,PRODUCT_DETAIL_REQUEST,PRODUCT_DETAIL_SUCCESS,CREATE_REVIEW_FAIL,CREATE_REVIEW_REQUEST,CREATE_REVIEW_RESET,CREATE_REVIEW_SUCCESS,ADMIN_PRODUCT_REQUEST,ADMIN_PRODUCT_FAIL,ADMIN_PRODUCT_SUCCESS,NEW_PRODUCT_FAIL,NEW_PRODUCT_REQUEST,NEW_PRODUCT_RESET,NEW_PRODUCT_SUCCESS   } from "../constants/productConstant";
 
 export const productReducer=(state={products:[]},action)=>{
     switch(action.type)
@@ -100,5 +100,36 @@ export const newReviewReducer=(state={},action)=>{
             }
         default:
             return state
+    }
+}
+
+export const newProductReducer=(state={product:{}},action)=>
+{
+    switch(action.type)
+    {
+        case NEW_PRODUCT_REQUEST:
+            return{
+                ...state,
+                loading:true
+            }
+        case NEW_PRODUCT_SUCCESS:
+            return{
+                loading:false,
+                success:action.payload.success,
+                product:action.payload.product
+            }
+        case NEW_PRODUCT_RESET:
+            return{
+                ...state,
+                success:false,
+                loading:false,
+            }
+        case NEW_PRODUCT_FAIL:
+            return{
+                loading:false,
+                error:action.payload
+            }
+        default:
+            return state 
     }
 }

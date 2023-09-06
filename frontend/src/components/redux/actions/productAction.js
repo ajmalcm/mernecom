@@ -1,4 +1,4 @@
-import { ALL_PRODUCT_REQUEST,ALL_PRODUCT_FAIL,ALL_PRODUCT_SUCCESS,CLEAR_ERRORS,PRODUCT_DETAIL_REQUEST,PRODUCT_DETAIL_FAIL,PRODUCT_DETAIL_SUCCESS,CREATE_REVIEW_FAIL,CREATE_REVIEW_REQUEST,CREATE_REVIEW_RESET,CREATE_REVIEW_SUCCESS,ADMIN_PRODUCT_REQUEST,ADMIN_PRODUCT_FAIL,ADMIN_PRODUCT_SUCCESS } from "../constants/productConstant";
+import { ALL_PRODUCT_REQUEST,ALL_PRODUCT_FAIL,ALL_PRODUCT_SUCCESS,CLEAR_ERRORS,PRODUCT_DETAIL_REQUEST,PRODUCT_DETAIL_FAIL,PRODUCT_DETAIL_SUCCESS,CREATE_REVIEW_FAIL,CREATE_REVIEW_REQUEST,CREATE_REVIEW_SUCCESS,ADMIN_PRODUCT_REQUEST,ADMIN_PRODUCT_FAIL,ADMIN_PRODUCT_SUCCESS,NEW_PRODUCT_FAIL,NEW_PRODUCT_REQUEST,NEW_PRODUCT_SUCCESS } from "../constants/productConstant";
 import axios from "axios";
 
 
@@ -71,6 +71,25 @@ export const getAdminProducts=()=>async(dispatch)=>{
     catch(err)
     {
         dispatch({type:ADMIN_PRODUCT_FAIL,payload:err.response.data.message})
+    }
+}
+
+export const createProduct=(productDetails)=>async(dispatch)=>{
+    try{
+        dispatch({type:NEW_PRODUCT_REQUEST})
+        console.log(productDetails)
+
+        const config={
+           headers: {"Content-Type":"multipart/form-data"}
+        }
+
+        const {data}=await axios.post("/api/v1/admin/product/new",productDetails,config);
+
+        dispatch({type:NEW_PRODUCT_SUCCESS,payload:data});
+    }
+    catch(err)
+    {
+        dispatch({type:NEW_PRODUCT_FAIL,payload:err.response.data.message})
     }
 }
 

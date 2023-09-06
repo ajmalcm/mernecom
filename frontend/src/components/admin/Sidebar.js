@@ -63,7 +63,7 @@ const Sidebar = () => {
     <>
     {
         sideOpen?
-    <div className="h-[100vh] w-[300px] overflow-auto flex flex-col bg-[#f3f3f3]  shadow-sm sticky top-0 left-0 max-[820px]:w-[200px]">
+    <div className="h-[100vh] w-[300px] overflow-auto flex flex-col bg-[#f3f3f3]  shadow-sm sticky top-0 left-0 max-[820px]:w-fit">
           {/* sidebar top */}
           <div className="flex justify-between items-center mb-2">
             <div className="flex items-center gap-1">

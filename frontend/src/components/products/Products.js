@@ -46,7 +46,7 @@ function Products() {
     },
     {
       name: "Electronics",
-      sub: [{ sub1: "Laptop" }, { sub1: "mobile" }],
+      sub: [{ sub1: "Laptop" }, { sub1: "Mobile" }],
       icon: ComputerOutlinedIcon,
     },
     {

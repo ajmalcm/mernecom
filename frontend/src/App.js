@@ -30,6 +30,7 @@ import OrderDetails from './components/orders/OrderDetails';
 import Dashboard from './components/admin/Dashboard';
 import Orders from './components/admin/Orders';
 import AllProducts from './components/admin/AllProducts';
+import NewProduct from './components/admin/NewProduct';
 function App() {
 
   const dispatch=useDispatch();
@@ -101,6 +102,9 @@ function App() {
   }
   {
     isAuthenticated && user.role==="admin" && <Route exact path='/admin/allproducts' element={<AllProducts/>}/>
+  }
+  {
+    isAuthenticated && user.role==="admin" && <Route exact path='/admin/createProducts' element={<NewProduct/>}/>
   }
 </Routes>
   <Footer/>

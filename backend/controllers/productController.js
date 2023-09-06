@@ -1,10 +1,39 @@
 // const { query } = require("express");
 const Product = require("../models/productModel");
+const cloudinary=require("cloudinary");
 const ApiFeatures = require("../utils/apiFeatures");
 const namedErrorHandler = require("../utils/errorHandler");
 //create products-->admin
 exports.createProducts = async (req, res, next) => {
   try {
+
+    let images=[];
+    console.log(req.body["images[]"])
+    if(typeof req.body["images[]"] === "string")
+    {
+      images.push(req.body["images[]"])
+    }
+    else
+    {
+      images=req.body["images[]"]
+    }
+
+    let imagesLink=[];
+
+    for (let i = 0; i < images.length; i++) 
+    {
+      const result=await cloudinary.v2.uploader.upload(images[i],
+        {
+          folder:"products",
+        })
+
+        imagesLink.push({
+          public_id:result.public_id,
+          url:result.secure_url
+        })
+    }
+
+    req.body.images=imagesLink
     req.body.user=req.user.id
     const product = await Product.create(req.body);
 
