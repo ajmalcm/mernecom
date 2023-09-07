@@ -1,7 +1,7 @@
-import react, { useEffect } from "react";
+import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
-import { clearErrors, getAdminProducts } from "../redux/actions/productAction";
+import { clearErrors, deleteProduct, getAdminProducts } from "../redux/actions/productAction";
 import Loading from "../loading/Loading";
 import Sidebar from "./Sidebar";
 import { Link } from "react-router-dom";
@@ -10,8 +10,10 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { Button } from "@mui/material";
 import Metadata from "../layout/Header/Metadata";
 import { DataGrid } from "@mui/x-data-grid";
+import { DELETE_PRODUCT_RESET } from "../redux/constants/productConstant";
 const AllProducts = () => {
-  const { products, error, loading } = useSelector((state) => state.products);
+  const { products, error } = useSelector((state) => state.products);
+  const {error:deleteError,isDeleted,loading}=useSelector(state=>state.product);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,8 +21,22 @@ const AllProducts = () => {
       toast.error(error);
       dispatch(clearErrors())
     }
+    if(deleteError)
+    {
+      toast.error(deleteError);
+      dispatch(clearErrors())
+    }
+    if(isDeleted)
+    {
+      toast.success("PRODUCT DELETED SUCCESSFULLY.")
+      dispatch({type:DELETE_PRODUCT_RESET})
+    }
     dispatch(getAdminProducts());
-  }, [error, dispatch]);
+  }, [error, dispatch,deleteError,isDeleted]);
+
+  const deleteProductHandler=(id)=>{
+    dispatch(deleteProduct(id))
+  }
 
   const columns = [
     {
@@ -64,7 +80,7 @@ const AllProducts = () => {
               <EditIcon className="hover:text-[#157ed2]" />
             </Link>
 
-            <Button className= "text-black">
+            <Button className= "text-black" onClick={()=>deleteProductHandler(productId)}>
               <DeleteIcon className="hover:text-[#157ed2]"/>
             </Button>
           </>
@@ -85,14 +101,15 @@ const AllProducts = () => {
       });
     });
 
+
   return (
     <>
       <Metadata title="All products-admin" />
-      {/* { */}
-        {/* loading ? (
+      {
+        loading ? (
         <Loading />
-      ) :  */}
-      {/* ( */}
+      ) : 
+      (
         <div className="min-h-[104vh] flex justify-between w-screen absolute  bg-white top-0 left-0 gap-3">
           <Sidebar />
 
@@ -112,7 +129,7 @@ const AllProducts = () => {
           </div>
           </div>
         </div>
-      {/* )} */}
+      )}
     </>
   );
 };

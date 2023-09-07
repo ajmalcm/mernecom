@@ -31,6 +31,7 @@ import Dashboard from './components/admin/Dashboard';
 import Orders from './components/admin/Orders';
 import AllProducts from './components/admin/AllProducts';
 import NewProduct from './components/admin/NewProduct';
+import UpdateProduct from './components/admin/UpdateProduct';
 function App() {
 
   const dispatch=useDispatch();
@@ -105,6 +106,9 @@ function App() {
   }
   {
     isAuthenticated && user.role==="admin" && <Route exact path='/admin/createProducts' element={<NewProduct/>}/>
+  }
+  {
+    isAuthenticated && user.role==="admin" && <Route exact path='/admin/product/:id' element={<UpdateProduct/>}/>
   }
 </Routes>
   <Footer/>
