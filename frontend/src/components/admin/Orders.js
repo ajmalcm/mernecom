@@ -3,16 +3,18 @@ import Sidebar from "./Sidebar";
 import Metadata from "../layout/Header/Metadata";
 import Loading from "../loading/Loading";
 import { DataGrid } from "@mui/x-data-grid";
-import { clearErrors, getAllOrders } from "../redux/actions/orderAction";
+import { clearErrors, deleteOrder, getAllOrders } from "../redux/actions/orderAction";
 import { Link } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { Button } from "@mui/material";
+import { DELETE_ORDER_RESET } from "../redux/constants/orderConstants";
 const Orders = () => {
   const dispatch = useDispatch();
   const { loading, error, orders } = useSelector((state) => state.AllOrders);
+  const {loading:deleteLoading,error:deleteError,isDeleted}=useSelector(state=>state.orders);
   const columns = [
     {
       field: "id",
@@ -60,7 +62,7 @@ const Orders = () => {
               <EditIcon className="hover:text-[#157ed2]" />
             </Link>
 
-            <Button className= "text-black">
+            <Button className= "text-black" onClick={()=>{dispatch(deleteOrder(orderId))}}>
               <DeleteIcon className="hover:text-[#157ed2]"/>
             </Button>
 
@@ -88,18 +90,28 @@ const Orders = () => {
         toast.error(error)
         dispatch(clearErrors())
       }
+      if(deleteError)
+      {
+        toast.error(deleteError)
+        dispatch(clearErrors())
+      }
+      if(isDeleted)
+      {
+        toast.success("Order Deleted successfully.");
+        dispatch({type:DELETE_ORDER_RESET})
+      }
       dispatch(getAllOrders());
-    },[dispatch,error])
+    },[dispatch,error,isDeleted,deleteError])
 
   return (
     <>
       <Metadata title="All Orders-admin" />
-      {loading ? (
-        <Loading />
-      ) : (
+      
         <div className="min-h-[104vh] flex justify-between w-screen absolute  bg-white top-0 left-0 gap-3">
           <Sidebar />
-
+          {loading || deleteLoading ? (
+        <Loading />
+      ) : (
           <div className="mt-6 flex flex-col flex-1 p-4 max-md:p-0 gap-8 w-[70%]">
           <h4 className="tracking-widest font-barlow font-[500] text-2xl text-center mb-4 ">ALL-ORDERS</h4>
           <div className="w-full">
@@ -115,8 +127,8 @@ const Orders = () => {
           />
         </div>
         </div>
-        </div>
       )}
+        </div>
     </>
   );
 };

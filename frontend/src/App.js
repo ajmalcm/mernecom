@@ -32,6 +32,7 @@ import Orders from './components/admin/Orders';
 import AllProducts from './components/admin/AllProducts';
 import NewProduct from './components/admin/NewProduct';
 import UpdateProduct from './components/admin/UpdateProduct';
+import UpdateOrder from './components/admin/UpdateOrder';
 function App() {
 
   const dispatch=useDispatch();
@@ -112,6 +113,9 @@ function App() {
   }
   {
     isAuthenticated && user.role==="admin" && <Route exact path='/admin/orders' element={<Orders/>}/>
+  }
+  {
+    isAuthenticated && user.role==="admin" && <Route exact path='/admin/order/:id' element={<UpdateOrder/>}/>
   }
 </Routes>
   <Footer/>

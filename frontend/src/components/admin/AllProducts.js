@@ -105,14 +105,14 @@ const AllProducts = () => {
   return (
     <>
       <Metadata title="All products-admin" />
+       
+        <div className="min-h-[104vh] flex justify-between w-screen absolute  bg-white top-0 left-0 gap-3">
+          <Sidebar />
       {
-        loading || allLoading ? (
+          loading || allLoading ? (
         <Loading />
       ) : 
       (
-        <div className="min-h-[104vh] flex justify-between w-screen absolute  bg-white top-0 left-0 gap-3">
-          <Sidebar />
-
           <div className="mt-6 flex flex-col flex-1 p-4 max-md:p-0 gap-8 w-[70%]">
           <h4 className="tracking-widest font-barlow font-[500] text-2xl text-center mb-4 ">ALL-PRODUCTS</h4>
           <div className="w-full">
@@ -128,8 +128,8 @@ const AllProducts = () => {
             />
           </div>
           </div>
-        </div>
       )}
+        </div>
     </>
   );
 };

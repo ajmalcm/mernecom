@@ -87,11 +87,11 @@ const NewProduct = () => {
   return (
     <>
       <Metadata title="New Product-admin" />
+        <div className="min-h-[104vh] flex justify-between w-screen absolute  bg-white top-0 left-0 gap-3">
+          <Sidebar />
       {loading ? (
         <Loading />
       ) : (
-        <div className="min-h-[104vh] flex justify-between w-screen absolute  bg-white top-0 left-0 gap-3">
-          <Sidebar />
           <div className="mt-6 flex flex-1 flex-col p-4 max-md:p-0 gap-8 max-[460px]:p-1 max-[460px]:mt-2">
             <h4 className="tracking-widest font-barlow font-[500] text-2xl text-center mb-4">
               NEW PRODUCT
@@ -193,8 +193,8 @@ const NewProduct = () => {
             </form>
             {/* </div> */}
           </div>
-        </div>
       )}
+        </div>
     </>
   );
 };
