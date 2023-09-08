@@ -1,4 +1,4 @@
-import { CREATE_ORDER_REQUEST,CLEAR_ERRORS,CREATE_ORDER_FAIL,CREATE_ORDER_SUCCESS,MY_ORDERS_FAIL,MY_ORDERS_REQUEST,MY_ORDERS_SUCCESS,ORDER_DETAILS_FAIL,ORDER_DETAILS_REQUEST,ORDER_DETAILS_SUCCESS } from "../constants/orderConstants";
+import { CREATE_ORDER_REQUEST,CLEAR_ERRORS,CREATE_ORDER_FAIL,CREATE_ORDER_SUCCESS,MY_ORDERS_FAIL,MY_ORDERS_REQUEST,MY_ORDERS_SUCCESS,ORDER_DETAILS_FAIL,ORDER_DETAILS_REQUEST,ORDER_DETAILS_SUCCESS,ALL_ORDERS_REQUEST,ALL_ORDERS_SUCCESS,ALL_ORDERS_FAIL } from "../constants/orderConstants";
 
 export const orderReducer=(state={},action)=>{
     switch(action.type)
@@ -84,5 +84,33 @@ export const orderDetailsReducer=(state={order:{}},action)=>{
                 }
             default:
                 return state
+    }
+}
+
+export const allOrdersReducer=(state={},action)=>{
+    switch(action.type)
+    {
+        case ALL_ORDERS_REQUEST:
+            return{
+                loading:true
+            }
+        case ALL_ORDERS_SUCCESS:
+            return{
+                loading:false,
+                orders:action.payload
+            }
+        case ALL_ORDERS_FAIL:
+            return{
+                loading:false,
+                error:action.payload
+            }
+        case CLEAR_ERRORS:
+            return{
+                ...state,
+                loading:false,
+                error:null
+            }
+        default:
+            return state
     }
 }

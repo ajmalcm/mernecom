@@ -110,6 +110,9 @@ function App() {
   {
     isAuthenticated && user.role==="admin" && <Route exact path='/admin/product/:id' element={<UpdateProduct/>}/>
   }
+  {
+    isAuthenticated && user.role==="admin" && <Route exact path='/admin/orders' element={<Orders/>}/>
+  }
 </Routes>
   <Footer/>
     </Router>

@@ -12,7 +12,7 @@ import Metadata from "../layout/Header/Metadata";
 import { DataGrid } from "@mui/x-data-grid";
 import { DELETE_PRODUCT_RESET } from "../redux/constants/productConstant";
 const AllProducts = () => {
-  const { products, error } = useSelector((state) => state.products);
+  const {loading:allLoading, products, error } = useSelector((state) => state.products);
   const {error:deleteError,isDeleted,loading}=useSelector(state=>state.product);
   const dispatch = useDispatch();
 
@@ -106,7 +106,7 @@ const AllProducts = () => {
     <>
       <Metadata title="All products-admin" />
       {
-        loading ? (
+        loading || allLoading ? (
         <Loading />
       ) : 
       (

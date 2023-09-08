@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import { newProductReducer, newReviewReducer, productDetailReducer, productReducer, productsReducer } from "./productReducer";
-import { myOrdersReducer, orderDetailsReducer, orderReducer } from "./orderReducer";
+import { allOrdersReducer, myOrdersReducer, orderDetailsReducer, orderReducer } from "./orderReducer";
 import {
   forgotPasswordReducer,
   profileReducer,
@@ -19,7 +19,8 @@ const rootReducer = combineReducers({
   orderDetails:orderDetailsReducer,
   newReview:newReviewReducer,
   newProduct:newProductReducer,
-  product:productsReducer
+  product:productsReducer,
+  AllOrders:allOrdersReducer
 });
 
 export default rootReducer;
