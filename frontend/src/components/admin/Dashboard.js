@@ -10,18 +10,21 @@ import {CategoryScale} from 'chart.js';
 import Chart from 'chart.js/auto';
 import { useDispatch, useSelector } from "react-redux";
 import { getAdminProducts } from "../redux/actions/productAction";
+import { getAllOrders } from "../redux/actions/orderAction";
 const Dashboard = () => {
   
   Chart.register(CategoryScale);
   const dispatch=useDispatch();
   const {products}=useSelector(state=>state.products);
+  const {orders}=useSelector(state=>state.AllOrders);
+
 
   const dashItems=[
     {icon:<CurrencyRupeeIcon  fontSize="medium"/>,price:`₹${1233}`,text:"Earnings",colornbg:"text-red-500 bg-red-100"},
     {icon:<PeopleAltOutlinedIcon fontSize="medium"/>,price:` ${20}`,text:"Users",colornbg:"text-green-500 bg-green-100"},
     {icon:<CategoryOutlinedIcon fontSize="medium"/>,price:` ${products.length}`,text:"Products",colornbg:"text-blue-500 bg-blue-100"},
     // {icon:<SignalCellularAltRoundedIcon fontSize="medium"/>,price:`₹${6643}`,text:"Sales",colornbg:"text-orange-500 bg-orange-100"},
-    {icon:<CachedRoundedIcon fontSize="medium"/>,price:` ${10}`,text:"Orders",colornbg:"text-violet-500 bg-violet-100"},
+    {icon:<CachedRoundedIcon fontSize="medium"/>,price:` ${orders?.length}`,text:"Orders",colornbg:"text-violet-500 bg-violet-100"},
   ]
 
   const lineState={
@@ -46,6 +49,7 @@ const Dashboard = () => {
 
   useEffect(()=>{
     dispatch(getAdminProducts())
+    dispatch(getAllOrders())
   },[dispatch])
 
   const doughtnutState={

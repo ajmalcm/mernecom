@@ -125,16 +125,16 @@ exports.updateOrder=async(req,res,next)=>{
             return res.status(401).json({success:false,message:"Product has already been delivered."})
         }
 
-        if(order.orderStatus==="Shipped")
+        if(status==="Shipped")
         {
             order.orderItems.forEach(async(or)=>{
-                await updateStock(or.product,or.quantity)
+                await updateStock(or.product,or.quantity)  
             })
         }
 
         order.orderStatus=status;
 
-        if(order.orderStatus==="Delivered")
+        if(status==="Delivered")
         {
             order.deliveredAt=Date.now();
         }

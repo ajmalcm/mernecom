@@ -62,7 +62,7 @@ const UpdateOrder = () => {
 
             {/* from here */}
             <section className="max-[600px]:p-0 flex justify-between max-lg:flex-col max-xl:gap-8 flex-1 w-full">
-              <section className="p-0 flex flex-[0.6] flex-col max-xl:gap-8 mb-4 ">
+              <section className="p-0 flex flex-[0.6] flex-col max-xl:gap-8 mb-4 " style={{flex:order.orderStatus==="Delivered"?"1":"0.7"}}>
                 <div className="flex flex-[0.7] flex-col max-md:gap-4 border-b-2 border-b-[#ddd] pb-3">
                   <h2 className="font-barlow text-4xl text-skyblue font-[500] max-md:text-xl">
                     Order-#{order._id}
@@ -167,9 +167,9 @@ const UpdateOrder = () => {
                     ))}
                 </div>
               </section>
-              <div className="flex-[0.4] flex justify-center gap-4 items-center font-barlow flex-col">
+              <div className="flex-[0.4] flex justify-center gap-4 items-center font-barlow flex-col" style={{display:order.orderStatus==="Delivered"?"none":"flex"}}>
                 <h2 className="font-barlow text-3xl font-[500] tracking-wider pb-3 border-b-2 border-[#ddd]">
-                  Order Summary
+                  Order Process
                 </h2>
                 <select
                   onChange={(e) => setStatus(e.target.value)}
