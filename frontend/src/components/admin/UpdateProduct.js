@@ -21,14 +21,14 @@ const UpdateProduct = () => {
     const { loading:updateLoading, error:updateError, isUpdated } = useSelector((state) => state.product);
 
     const [productDetails, setProductDetails] = useState({
-        name: product?.name,
-        price: product?.price,
-        description: product?.description,
-        category: product?.category,
-        stock: product?.stock,
+        name: "",
+        price: "",
+        description: "",
+        category: "",
+        stock: "",
       });
-      const [pimages, setImages] = useState(product?.images);
-      const [imagesPrev, setImagesPrev] = useState(product?.images);
+      const [pimages, setImages] = useState();
+      const [imagesPrev, setImagesPrev] = useState();
       const { name, price, description, category, stock } = productDetails;
       const dispatch = useDispatch();
     
@@ -94,7 +94,17 @@ const UpdateProduct = () => {
           dispatch({ type: UPDATE_PRODUCT_RESET });
         }
         dispatch(getproductDetail(id))
-      }, [dispatch, error,isUpdated,updateError,id ]);
+        setProductDetails({
+          name: product?.name,
+          price: product?.price,
+          description: product?.description,
+          category: product?.category,
+          stock: product?.stock,
+        });
+        setImages(product?.images)
+        setImagesPrev(product?.images)
+
+      }, [dispatch, error,isUpdated,updateError,id,product?.name,product?.price,product?.description,product?.category,product?.stock]);
   return (
     <>
     <Metadata title={`Product-Update-${product.name}`} />

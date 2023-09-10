@@ -1,79 +1,73 @@
-import { useEffect } from "react";
-import { toast } from "react-toastify";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  clearErrors,
-  deleteProduct,
-  getAdminProducts,
-} from "../redux/actions/productAction";
-import Loading from "../loading/Loading";
-import Sidebar from "./Sidebar";
-import { Link } from "react-router-dom";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
+import React, { useEffect } from "react";
 import { Button } from "@mui/material";
 import Metadata from "../layout/Header/Metadata";
+import Sidebar from "./Sidebar";
 import { DataGrid } from "@mui/x-data-grid";
-import { DELETE_PRODUCT_RESET } from "../redux/constants/productConstant";
-const AllProducts = () => {
+import { useDispatch, useSelector } from "react-redux";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { toast } from "react-toastify";
+import {
+  clearErrors,
+  deleteUser,
+  getAllUsers,
+} from "../redux/actions/userAction";
+import { Link } from "react-router-dom";
+import { DELETE_USER_RESET } from "../redux/constants/useeConstants";
+import Loading from "../loading/Loading";
+
+const AllUsers = () => {
+  const dispatch = useDispatch();
+  const { loading, error, users } = useSelector((state) => state.allUsers);
   const {
-    loading: allLoading,
-    products,
-    error,
-  } = useSelector((state) => state.products);
-  const {
+    loading: deleteLoading,
     error: deleteError,
     isDeleted,
-    loading,
-  } = useSelector((state) => state.product);
-  const dispatch = useDispatch();
-
+  } = useSelector((state) => state.profile);
   useEffect(() => {
     if (error) {
       toast.error(error);
-      dispatch(clearErrors());
+      clearErrors();
     }
     if (deleteError) {
       toast.error(deleteError);
-      dispatch(clearErrors());
+      clearErrors();
     }
     if (isDeleted) {
-      toast.success("PRODUCT DELETED SUCCESSFULLY.");
-      dispatch({ type: DELETE_PRODUCT_RESET });
+      toast.success("User deleted successfully.");
+      dispatch({ type: DELETE_USER_RESET });
     }
-    dispatch(getAdminProducts());
-  }, [error, dispatch, deleteError, isDeleted]);
-
-  const deleteProductHandler = (id) => {
-    dispatch(deleteProduct(id));
-  };
+    dispatch(getAllUsers());
+  }, [dispatch, error, deleteError, isDeleted]);
 
   const columns = [
     {
       field: "id",
-      headerName: "Product ID",
+      headerName: "User ID",
       minWidth: 150,
-      flex: 0.8,
+      flex: 0.6,
     },
     {
       field: "name",
       headerName: "Name",
       minWidth: 150,
-      flex: 0.5,
+      flex: 0.3,
     },
     {
-      field: "stock",
-      headerName: "Stock",
-      type: "number",
+      field: "email",
+      headerName: "Email",
       minWidth: 150,
       flex: 0.3,
     },
     {
-      field: "price",
-      headerName: "Price",
+      field: "role",
+      headerName: "Role",
       type: "number",
       minWidth: 150,
-      flex: 0.5,
+      flex: 0.3,
+      cellClassName: (params) => {
+        return params.row.role === "admin" ? "text-green-600" : "text-red-600";
+      },
     },
     {
       field: "action",
@@ -83,16 +77,16 @@ const AllProducts = () => {
       flex: 0.3,
       sortable: false,
       renderCell: (params) => {
-        const productId = params.row.id; // Assuming your data has an 'id' field
+        const userId = params.row.id; // Assuming your data has an 'id' field
         return (
           <>
-            <Link to={`/admin/product/${productId}`}>
+            <Link to={`/admin/user/${userId}`}>
               <EditIcon className="hover:text-[#157ed2]" />
             </Link>
 
             <Button
               className="text-black"
-              onClick={() => deleteProductHandler(productId)}
+              onClick={() => dispatch(deleteUser(userId))}
             >
               <DeleteIcon className="hover:text-[#157ed2]" />
             </Button>
@@ -104,23 +98,23 @@ const AllProducts = () => {
 
   const rows = [];
 
-  products &&
-    products.forEach((item) => {
+  users &&
+    users.forEach((user) => {
       rows.push({
-        id: item._id,
-        stock: item.stock,
-        price: item.price,
-        name: item.name,
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
       });
     });
 
   return (
     <>
-      <Metadata title="All products-admin" />
+      <Metadata title="All Users-admin" />
 
       <div className="min-h-[104vh] flex justify-between w-screen absolute  bg-white top-0 left-0 gap-3">
         <Sidebar />
-        {loading || allLoading ? (
+        {loading || deleteLoading ? (
           <Loading />
         ) : (
           <div className="mt-6 flex flex-col flex-1 p-4 max-md:p-0 gap-8 w-[70%]">
@@ -146,4 +140,4 @@ const AllProducts = () => {
   );
 };
 
-export default AllProducts;
+export default AllUsers;

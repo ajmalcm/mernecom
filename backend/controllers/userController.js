@@ -390,6 +390,8 @@ exports.deleteUser=async(req,res,next)=>{
             })
         }
 
+        await cloudinary.v2.uploader.destroy(user.avatar.public_id)
+
         await User.findByIdAndRemove(req.params.id);
 
         res.status(200).json({
