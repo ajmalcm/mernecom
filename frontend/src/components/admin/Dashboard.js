@@ -3,7 +3,7 @@ import Sidebar from "./Sidebar";
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import CategoryOutlinedIcon from '@mui/icons-material/CategoryOutlined';
-import SignalCellularAltRoundedIcon from '@mui/icons-material/SignalCellularAltRounded';
+// import SignalCellularAltRoundedIcon from '@mui/icons-material/SignalCellularAltRounded';
 import CachedRoundedIcon from '@mui/icons-material/CachedRounded';
 import { Doughnut,Line} from "react-chartjs-2";
 import {CategoryScale} from 'chart.js'; 
@@ -11,17 +11,19 @@ import Chart from 'chart.js/auto';
 import { useDispatch, useSelector } from "react-redux";
 import { getAdminProducts } from "../redux/actions/productAction";
 import { getAllOrders } from "../redux/actions/orderAction";
+import { getAllUsers } from "../redux/actions/userAction";
 const Dashboard = () => {
   
   Chart.register(CategoryScale);
   const dispatch=useDispatch();
   const {products}=useSelector(state=>state.products);
   const {orders}=useSelector(state=>state.AllOrders);
+  const {users}=useSelector(state=>state.allUsers)
 
 
   const dashItems=[
     {icon:<CurrencyRupeeIcon  fontSize="medium"/>,price:`₹${1233}`,text:"Earnings",colornbg:"text-red-500 bg-red-100"},
-    {icon:<PeopleAltOutlinedIcon fontSize="medium"/>,price:` ${20}`,text:"Users",colornbg:"text-green-500 bg-green-100"},
+    {icon:<PeopleAltOutlinedIcon fontSize="medium"/>,price:` ${users.length}`,text:"Users",colornbg:"text-green-500 bg-green-100"},
     {icon:<CategoryOutlinedIcon fontSize="medium"/>,price:` ${products.length}`,text:"Products",colornbg:"text-blue-500 bg-blue-100"},
     // {icon:<SignalCellularAltRoundedIcon fontSize="medium"/>,price:`₹${6643}`,text:"Sales",colornbg:"text-orange-500 bg-orange-100"},
     {icon:<CachedRoundedIcon fontSize="medium"/>,price:` ${orders?.length}`,text:"Orders",colornbg:"text-violet-500 bg-violet-100"},
@@ -50,6 +52,7 @@ const Dashboard = () => {
   useEffect(()=>{
     dispatch(getAdminProducts())
     dispatch(getAllOrders())
+    dispatch(getAllUsers())
   },[dispatch])
 
   const doughtnutState={

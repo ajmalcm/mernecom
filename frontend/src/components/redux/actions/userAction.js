@@ -244,6 +244,24 @@ export const userDetails=(id)=>async(dispatch)=>{
   }
 }
 
+export const updateUser=(id,userdata)=>async(dispatch)=>{
+  try{
+    dispatch({type:UPDATE_USER_REQUEST})
+
+    const config={
+      headers:{"Content-Type":"application/json"}
+    }
+
+    const {data}=await axios.put(`/api/v1/admin/user/${id}`,userdata,config);
+
+    dispatch({type:UPDATE_USER_SUCCESS,payload:data.success})
+  }
+  catch(err)
+  {
+    dispatch({type:UPDATE_USER_FAIL,payload:err.response.data.message})
+  }
+}
+
 export const clearErrors = () => async (dispatch) => {
   dispatch({ type: CLEAR_ERRORS });
 };

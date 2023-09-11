@@ -35,6 +35,7 @@ import UpdateProduct from './components/admin/UpdateProduct';
 import UpdateOrder from './components/admin/UpdateOrder';
 import AllUsers from './components/admin/AllUsers';
 import UpdateUser from './components/admin/UpdateUser';
+import Reviews from './components/admin/Reviews';
 function App() {
 
   const dispatch=useDispatch();
@@ -124,6 +125,9 @@ function App() {
   }
   {
     isAuthenticated && user.role==="admin" && <Route exact path='/admin/user/:id' element={<UpdateUser/>}/>
+  }
+  {
+    isAuthenticated && user.role==="admin" && <Route exact path='/admin/reviews' element={<Reviews/>}/>
   }
 </Routes>
   <Footer/>

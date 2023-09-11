@@ -17,6 +17,7 @@ import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import Dicon from "../../imgs/dicon.png";
 import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from '@mui/icons-material/Menu';
+import RateReviewIcon from '@mui/icons-material/RateReview';
 
 const Sidebar = () => {
     const {pathname}=useLocation()
@@ -33,6 +34,7 @@ const Sidebar = () => {
             { subIcon: <AddOutlinedIcon />, subtitle: "Create Products",link:"/admin/createproducts" },
             { subIcon: <ShoppingCartOutlinedIcon />, subtitle: "Orders",link:"/admin/orders" },
             { subIcon: <PeopleAltOutlinedIcon />, subtitle: "Users",link:"/admin/users" },
+            { subIcon: <RateReviewIcon />, subtitle: "Reviews",link:"/admin/reviews" },
           ],
         },
         {
