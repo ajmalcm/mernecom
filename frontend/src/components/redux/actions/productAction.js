@@ -155,6 +155,35 @@ export const updateProduct = (id, productDetails) => async (dispatch) => {
   }
 };
 
+export const getAllReviews=(id)=>async(dispatch)=>{
+    try{
+        dispatch({type:ALL_REVIEW_REQUEST});
+
+        const {data}=await axios.get(`/api/v1/reviews?id=${id}`);
+
+        dispatch({type:ALL_REVIEW_SUCCESS,payload:data.reviews});
+    }
+    catch(err)
+    {
+        dispatch({type:ALL_REVIEW_FAIL,payload:err.response.data.message})
+    }
+}
+
+export const deleteReview=(productId,reviewId)=>async(dispatch)=>{
+    try{
+        dispatch({type:DELETE_REVIEW_REQUEST});
+
+        const {data}=await axios.delete(`/api/v1/reviews?productId=${productId}&id=${reviewId}`)
+
+        dispatch({type:DELETE_REVIEW_SUCCESS,payload:data.success})
+
+    }
+    catch(err)
+    {
+        dispatch({type:DELETE_REVIEW_FAIL,payload:err.response.data.message})
+    }
+}
+
 export const clearErrors = () => (dispatch) => {
   dispatch({ type: CLEAR_ERRORS });
 };

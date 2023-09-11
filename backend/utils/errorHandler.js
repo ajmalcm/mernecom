@@ -34,7 +34,7 @@ const namedErrorHandler=(err,res)=>{
         return res.status(400).json({success:false,message:`JsonWebToken is expired. Try again`});
     }
 
-    return res.status(400).json({success:false,message:err.stack});
+    return res.status(400).json({success:false,message:err.message});
 }
 module.exports=namedErrorHandler
 

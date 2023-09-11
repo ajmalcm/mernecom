@@ -7,6 +7,7 @@ body {
   padding:0;
   box-sizing: border-box;
   background-color: #f3f3f3;
+  cursor: url("./imgs/cursorr.png"),auto;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

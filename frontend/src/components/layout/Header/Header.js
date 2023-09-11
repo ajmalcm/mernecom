@@ -87,8 +87,8 @@ const Header = () => {
           <li><Link to="/">Home</Link></li>
           <li><Link to="/products">Products</Link></li>
           <li className="lisp"><Link to="/blog">Blog</Link></li>
-          <li className="lisp"><Link to="/">Shoes</Link></li>
-          <li className="lisp"><Link to="/">Health</Link> </li>
+          {/* <li className="lisp"><Link to="/">Shoes</Link></li>
+          <li className="lisp"><Link to="/">Health</Link> </li> */}
           <li><Link to="/about">About</Link></li>
           <li><Link to="/contact">Contact</Link></li>
         </ul>

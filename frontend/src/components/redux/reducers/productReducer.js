@@ -244,13 +244,13 @@ export const allReviewsReducer=(state={reviews:[]},action)=>{
     }
 }
 export const reviewsReducer=(state={},action)=>{
-    switch(action.payload){
+    switch(action.type){
         case DELETE_REVIEW_REQUEST:
             return{
                 ...state,
                 loading:true
             }
-        case DELETE_PRODUCT_SUCCESS:
+        case DELETE_REVIEW_SUCCESS:
             return{
                 loading:false,
                 isDeleted:action.payload
