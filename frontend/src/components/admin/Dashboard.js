@@ -20,9 +20,13 @@ const Dashboard = () => {
   const {orders}=useSelector(state=>state.AllOrders);
   const {users}=useSelector(state=>state.allUsers)
 
+  let totalAmount=0;
+  orders&&orders.forEach((item)=>{
+    totalAmount+=item.totalPrice
+  })
 
   const dashItems=[
-    {icon:<CurrencyRupeeIcon  fontSize="medium"/>,price:`₹${1233}`,text:"Earnings",colornbg:"text-red-500 bg-red-100"},
+    {icon:<CurrencyRupeeIcon  fontSize="medium"/>,price:`₹${totalAmount}`,text:"Earnings",colornbg:"text-red-500 bg-red-100"},
     {icon:<PeopleAltOutlinedIcon fontSize="medium"/>,price:` ${users.length}`,text:"Users",colornbg:"text-green-500 bg-green-100"},
     {icon:<CategoryOutlinedIcon fontSize="medium"/>,price:` ${products.length}`,text:"Products",colornbg:"text-blue-500 bg-blue-100"},
     // {icon:<SignalCellularAltRoundedIcon fontSize="medium"/>,price:`₹${6643}`,text:"Sales",colornbg:"text-orange-500 bg-orange-100"},
@@ -36,7 +40,7 @@ const Dashboard = () => {
         label:"Total Amount",
         backgoundColor:["#157ed2"],
         hoverBackgroundColor:["rgb(197,72,49)"],
-        data:[0,4000],
+        data:[0,totalAmount],
         tension:0.1
       }
 
