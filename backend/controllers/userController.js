@@ -28,6 +28,34 @@ exports.registerUser=async(req,res)=>{
         return res.status(500).json({success:false,message:"password and confirmPassword doesnt Match."})
        }
 
+       const message=`<p>Dear ${name},</p></br>
+
+       <p>Welcome to E-COMM! Shop with us for a world of exciting products, unbeatable prices, and exceptional service. Happy shopping 🤗!<p/><br/>
+       
+       <p>Warm regards,<p/>
+       <p>AJMAL C M<p/>
+       <p>E-COMM Team.<p/>`;
+
+
+        try{
+             sendEmail({
+                email:email,
+                subject:"Welcome to E-COMM - Your Ultimate Shopping Destination 😊 !",
+                message,
+                html: `<div><p style="color:black;">${message}</p><img src = "cid:myImg" style="width:400px;height:400px;"/></div>`,
+                attachments: [{
+                  filename: 'a6.jpg',
+                  path: __dirname + '/a6.jpg',
+                  cid: 'myImg'
+                }]
+            })
+        }
+        catch(err)
+        {
+            namedErrorHandler(err,res)
+        }
+       
+
        const user=await User.create({
         name,
         email,
