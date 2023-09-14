@@ -10,8 +10,9 @@ import { clearErrors, getMyOrders } from '../redux/actions/orderAction';
 import LaunchIcon from '@mui/icons-material/Launch';
 const MyOrders = () => {
   const dispatch=useDispatch();
-  const {user}=useSelector(state=>state.user);
+  const {user,isAuthenticated}=useSelector(state=>state.user);
   const {loading,error,orders}=useSelector(state=>state.myOrders);
+  const navigate=useNavigate();
   const columns=[
     {
       field:"id",
@@ -72,16 +73,20 @@ const MyOrders = () => {
 
 
   useEffect(()=>{
+    if(!isAuthenticated)
+    {
+      navigate("/login");
+    }
     if(error)
     {
       toast.error(error)
       dispatch(clearErrors())
     }
     dispatch(getMyOrders());
-  },[dispatch,error])
+  },[dispatch,error,isAuthenticated])
   return (
     <>
-    <Metadata title={`${user.name}'s orders`}/>
+    <Metadata title={`${user?.name}'s orders`}/>
     {
     loading?<Loader/>:
     <div className='px-12 py-8 max-md:p-2 bg-white min-h-[80vh]'>

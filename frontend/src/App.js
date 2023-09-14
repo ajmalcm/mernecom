@@ -67,7 +67,7 @@ function App() {
   <Route exact path="/login" element={<Login/>}/>
   <Route exact path="/register" element={<Register/>}/>
   {
-    isAuthenticated && <Route exact path="/account" element={<Account/>}/>
+  <Route exact path="/account" element={<Account/>}/>
   }
   {
     isAuthenticated &&  <Route exact path="/me/update" element={<UpdateProfile/>}/>
@@ -98,7 +98,7 @@ function App() {
     isAuthenticated && <Route exact path='/orderSuccess' element={<OrderSuccess/>}/>
   }
   {
-    isAuthenticated && <Route exact path='/orders/me' element={<MyOrders/>}/>
+     <Route exact path='/orders/me' element={<MyOrders/>}/>
   }
   {
     isAuthenticated && <Route exact path='/order/:id' element={<OrderDetails/>}/>
@@ -130,7 +130,7 @@ function App() {
   {
     isAuthenticated && user.role==="admin" && <Route exact path='/admin/reviews' element={<Reviews/>}/>
   }
-  <Route axact path='/:id' element={<NotFound/>}/>
+  <Route path={'/:id'} element={<NotFound/>}/>
 </Routes>
   <Footer/>
     </Router>

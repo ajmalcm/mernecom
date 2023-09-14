@@ -35,17 +35,18 @@ const Header = () => {
     <header className="navHeader rounded-bl-full">
       {/* //header top */}
       <div className="cnl">
-        <div>
+        {/* <div>
           <span>IND</span>
           <span>English</span>
-        </div>
+        </div> */}
 
         <ul className="ul" style={{display:isAuthenticated?"none":"flex"}}>
           <li className="lilg"><Link to="/account">My Account</Link></li>
           <li className="lilg"><Link to="/cart">My Cart</Link></li>
-          <li className="lilg"><Link to="/orders">Orders</Link></li>
-          <li className="lilg"><Link to="/login">Login</Link></li>
-          <li style={{borderRight:"none"}} className="lilg"><Link>Dashboard</Link></li>
+          <li className="lilg"><Link to="/orders/me">Orders</Link></li>
+          <li className="lilg" style={{border:"none"}}><Link to="/login">Login</Link></li>
+
+
           <li className="lism"><Link><AccountCircleIcon/></Link></li>
           <li className="lism"><Link><ShoppingCartCheckoutIcon/></Link></li>
           <li className="lism"><Link><CheckIcon/></Link></li>

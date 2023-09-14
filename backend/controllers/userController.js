@@ -124,7 +124,7 @@ exports.forgotPassword=async(req,res,next)=>{
 
         const resetPasswordUrl=`${process.env.FRONTEND_PORT}/password/reset/${resetToken}`;
 
-        const message=`Your password rest token is \n\n ${resetPasswordUrl} \n\nIf you have not requested for this email then pleasse ignore it.`;
+        const message=`Your password rest token is \n\n ${resetPasswordUrl} \n\nIf you have not requested for this email then please ignore it.`;
 
 
         try{
