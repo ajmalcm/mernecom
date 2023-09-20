@@ -37,6 +37,9 @@ import AllUsers from './components/admin/AllUsers';
 import UpdateUser from './components/admin/UpdateUser';
 import Reviews from './components/admin/Reviews';
 import NotFound from './components/loading/NotFound';
+import Blog from './components/about/Blog';
+import Contact from './components/about/Contact';
+import Aboutus from './components/about/Aboutus';
 function App() {
 
   const dispatch=useDispatch();
@@ -66,6 +69,9 @@ function App() {
   <Route exact path="/products/:keyword" element={<Products/>}/>
   <Route exact path="/login" element={<Login/>}/>
   <Route exact path="/register" element={<Register/>}/>
+  <Route exact path="/blog" element={<Blog/>}/>
+  <Route exact path='/contact' element={<Contact/>}/>
+  <Route exact path="/about" element={<Aboutus/>}/>
   {
   <Route exact path="/account" element={<Account/>}/>
   }
