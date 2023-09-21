@@ -375,124 +375,7 @@
         color:#ec544e;
         font-weight: 800;
     }
-    /* for newsletters */
-    /* #newsletter
-    {
-        display:flex;
-        flex-wrap:wrap;
-        justify-content: space-between;
-        background: url("../../imgs/banner/b200.webp");
-        align-items: center;
-        background-repeat: no-repeat;
-        background-size:cover;
-        background-position:center;
-    }
-    #newsletter h4{
-        font-size:22px;
-        font-weight:700;
-        color:#fff;
-    }
-    #newsletter p{
-        font-size:14px;
-        font-weight:600;
-        color:rgb(184, 174, 174);
-    }
-    #newsletter p span{
-        color:#ffbd27;
-    }
-    #newsletter .form input{
-        font-size:14px;
-        height:3.123rem;
-        padding:0 1.25em;
-        border:1px solid transparent;
-        outline:none;
-        width:100%;
-        border-radius: 4px;
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-    }
-    #newsletter .form button{
-        padding:0 0;
-        background-color: #18948e;
-        font-size: 13px;
-        color:#fff;
-        width:30%;
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-    }
-    #newsletter .form {
-        display:flex;
-        width: 40%;
-    } */
-    /* for footer section */
-    /* #footer
-    {
-        display:flex;
-        flex-wrap:wrap;
-        justify-content: space-between;
-    }
-    #footer .ft{
-        display: flex;
-        flex-direction: column;
-        padding:10px;
-    }
-    #footer h4{
-        font-size:18px;
-        padding:40px 0px 5px 0px;
-    }
-    #footer #contact p{
-        color:#1a1a1a;
-        margin:0;
-        padding-top:10%;
-        transition: all 0.2s ease;
-        cursor: pointer;
-    }
-    #footer #contact h5
-    {
-        font-size:18px;
-        padding:16% 0 8% 0;
-    }
-    #footer #contact .social a{
-        padding:50;
-    }
-    #footer a{
-        text-decoration: none;
-        color:#222;
-        padding-top: 12%;
-        transition: all 0.2s ease;
-    }
-    #footer a:hover,#footer #contact .social a:hover,#footer #contact p:hover {
-        color:#088178;
-    }
-    #footer #contact .social a{
-        padding-right:1%;
-    }
-    #footer #install .row img
-    {
-      border:2px solid #0c534f;
-      border-radius: 6px;  
-      cursor: pointer;
-    }
-    #footer #install #secu
-    {
-        width:80%;
-        margin-top: 10px;
-        cursor: pointer;
-    } */
-/*   
-    #footer #cc 
-    {
-        width:100%;
-        text-align: center;
-    }
-    #footer #cc p{
-        color:black;
-        font-size:17px;
-        font-weight:900;
-    }
-    #footer #cc p span{
-        color:#f56715;
-    } */
+    
     
     /* shop page */
     #shophero
@@ -531,59 +414,7 @@
         align-items: center;
     }
     
-    /* for single products page */
-    /* #sp .singlepi
-    {
-        width:40%;
-        margin-right: 50px;
-    }
-    #sp .singlepi .simggroup
-    {
-        display: flex;
-        justify-content: space-between;
-    }
-    #sp .singlepi .simggroup .simgs
-    {
-        width:24%;
-        cursor: pointer;
-    }
-    #sp
-    {
-        display:flex;
-    }
-    #sp #spdetails
-    {
-        width:50%;
-        padding-top: 30px;
-    }
-    #sp #spdetails h4{
-        padding: 40px 0 20px 0;
-    }
-    #sp #spdetails h2{
-        font-size: 26px;
-    }
-    #sp #spdetails select{
-        display:block;
-        padding:5px 10px;
-        margin-bottom: 10px;
-    }
-    #sp #spdetails input{
-        width:50px;
-        height:43px;
-        padding-left:10px;
-        margin-right:10px;
-        font-size:16px;
-    }
-    #sp #spdetails input:focus{
-        outline:none;
-    }
-    #sp #spdetails button{
-        background-color: #088178;
-        color:#fff;
-    }
-    #sp #spdetails span{
-        line-height:25px;
-    } */
+    
     
     /* for blog page */
     #shophero.bloghero
@@ -608,9 +439,11 @@
     }
     #blog .blogbox .blogimg img
     {
-    width:100%;
-    height: 300px;
-    object-fit: cover;
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        position: relative;
+        z-index: 10;
     }
     #blog .blogbox .blogdetails
     {
@@ -644,10 +477,10 @@
         position:absolute;
         top:-40px;
         left:0;
-        font-weight: 700;
+        font-weight: 600;
         color:#c9cbce;
-        font-size:70px;
-       z-index: -20;
+        font-size:80px;
+       z-index: 0;
     }
     #blog p{
         color:#000;
@@ -807,112 +640,7 @@
         font-weight:600;
         color:#000;
     }
-    /* for cart page */
-    /* #shophero.carthero
-    {
-        background: url("../../imgs/banner/cart.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-    #cart{
-        overflow-x: auto;
-    }
-    #cart table{
-        width:100%;
-        border-collapse: collapse;
-        table-layout: fixed;
-        white-space: nowrap;
-    }
-    #cart table img{
-        width:70px;
-    }
-    #cart table td:nth-child(1)
-    {
-        width:100px;
-        text-align: center;
-    }
-    #cart table td:nth-child(2)
-    {
-        width:150px;
-        text-align: center;
-    }
-    #cart table td:nth-child(3)
-    {
-        width:250px;
-        text-align: center;
-    }
-    #cart table td:nth-child(4),#cart table td:nth-child(5),#cart table td:nth-child(6)
-    {
-        width:150px;
-        text-align: center;
-    }
-    #cart table td:nth-child(5) input{
-        width:70px;
-        padding:10px 5px 10px 15px;
-    }
-    #cart table thead
-    {
-        border:1px solid #e2e9e1;
-        border-right: none;
-        border-left:none;
-    }
-    #cart table thead td{
-        font-weight:700;
-        text-transform:uppercase;
-        font-size:13px;
-        padding:18px 0;
-    }
-    #cart table tbody tr td{
-        padding-top:15px;
-    }
-    #cart table tbody td
-    {
-        font-size:13px;
-    }
-    #cartwc
-    {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap:wrap;
-    }
-    #cartwc #coupon h3,#carttotal h3
-    {
-    padding-bottom:15px;
-    }
-    #coupon{
-        width:50%;
-    }
-    #coupon input{
-        padding:10px 20px;
-        outline:none;
-        width:60%;
-        margin-right:10px;
-        border:1px solid #e2e9e1;
-    }
-    #coupon button,#carttotal button{
-        color:#fff;
-        background-color: #088178;
-        padding:10px 18px;
-    }
-    #carttotal
-    {
-        width:50%;
-        border:1px solid #e2e9e1;
-        margin-bottom:30px;
-        padding:30px;
-    }
-    #carttotal table{
-        border-collapse: collapse;
-        width:100%;
-        margin-bottom:20px;
-    }
-    #carttotal table td{
-        border:1px solid #e2e9e1;
-        width:50%;
-        padding:10px;
-        font-size:13px;
-    }
-     */
+    
     
     
     /* responsive */
