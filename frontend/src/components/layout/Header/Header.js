@@ -9,7 +9,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import CheckIcon from '@mui/icons-material/Check';
 import LoginIcon from '@mui/icons-material/Login';
-import DashboardIcon from '@mui/icons-material/Dashboard';
+// import DashboardIcon from '@mui/icons-material/Dashboard';
 const Header = () => {
   const [keyword,setKeyword]=useState("")
   const navigate=useNavigate();
@@ -47,11 +47,11 @@ const Header = () => {
           <li className="lilg" style={{border:"none"}}><Link to="/login">Login</Link></li>
 
 
-          <li className="lism"><Link><AccountCircleIcon/></Link></li>
-          <li className="lism"><Link><ShoppingCartCheckoutIcon/></Link></li>
-          <li className="lism"><Link><CheckIcon/></Link></li>
-          <li className="lism"><Link><LoginIcon/></Link></li>
-          <li className="lism" style={{borderRight:"none"}}><Link><DashboardIcon/></Link></li>
+          <li className="lism"><Link to="/account"><AccountCircleIcon/></Link></li>
+          <li className="lism"><Link to="/cart"><ShoppingCartCheckoutIcon/></Link></li>
+          <li className="lism"><Link to="/orders/me"><CheckIcon/></Link></li>
+          <li className="lism" style={{borderRight:"none"}}><Link to="/login"><LoginIcon/></Link></li>
+          {/* <li className="lism"><Link><DashboardIcon/></Link></li> */}
         </ul>
       </div>
       {/* header mid */}
