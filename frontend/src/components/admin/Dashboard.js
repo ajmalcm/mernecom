@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAdminProducts } from "../redux/actions/productAction";
 import { getAllOrders } from "../redux/actions/orderAction";
 import { getAllUsers } from "../redux/actions/userAction";
+import { Link } from "react-router-dom";
 const Dashboard = () => {
   
   Chart.register(CategoryScale);
@@ -26,11 +27,11 @@ const Dashboard = () => {
   })
 
   const dashItems=[
-    {icon:<CurrencyRupeeIcon  fontSize="medium"/>,price:`₹${totalAmount}`,text:"Earnings",colornbg:"text-red-500 bg-red-100"},
-    {icon:<PeopleAltOutlinedIcon fontSize="medium"/>,price:` ${users.length}`,text:"Users",colornbg:"text-green-500 bg-green-100"},
-    {icon:<CategoryOutlinedIcon fontSize="medium"/>,price:` ${products.length}`,text:"Products",colornbg:"text-blue-500 bg-blue-100"},
+    {icon:<CurrencyRupeeIcon  fontSize="medium"/>,price:`₹${totalAmount}`,text:"Earnings",colornbg:"text-red-500 bg-red-100",link:"/admin/Ecommerce"},
+    {icon:<PeopleAltOutlinedIcon fontSize="medium"/>,price:` ${users.length}`,text:"Users",colornbg:"text-green-500 bg-green-100",link:"/admin/users"},
+    {icon:<CategoryOutlinedIcon fontSize="medium"/>,price:` ${products.length}`,text:"Products",colornbg:"text-blue-500 bg-blue-100",link:"/admin/allproducts"},
     // {icon:<SignalCellularAltRoundedIcon fontSize="medium"/>,price:`₹${6643}`,text:"Sales",colornbg:"text-orange-500 bg-orange-100"},
-    {icon:<CachedRoundedIcon fontSize="medium"/>,price:` ${orders?.length}`,text:"Orders",colornbg:"text-violet-500 bg-violet-100"},
+    {icon:<CachedRoundedIcon fontSize="medium"/>,price:` ${orders?.length}`,text:"Orders",colornbg:"text-violet-500 bg-violet-100",link:"/admin/orders"},
   ]
 
   const lineState={
@@ -84,11 +85,11 @@ const Dashboard = () => {
           <h4 className="tracking-widest font-barlow font-[500] text-2xl text-center mb-4">DASHBOARD</h4>
           <div className="flex justify-center items-center gap-4 flex-wrap">
               {dashItems.map((item,i)=>(
-                <div className="flex flex-col h-[180px] w-[230px] justify-start font-barlow shadow-md rounded-lg pt-6 px-6 max-md:p-4 gap-2" key={i}>
+                <Link to={`${item.link}`} className="flex flex-col h-[180px] w-[230px] justify-start font-barlow shadow-md rounded-lg pt-6 px-6 max-md:p-4 gap-2" key={i}>
                   <div className={`rounded-full  w-fit p-3 ${item.colornbg} mb-2`}>{item.icon}</div>
                   <h5 className="mb-0 font-semibold text-xl">{item.price}</h5>
                   <span className="text-slate-400">{item.text}</span>
-                </div>
+                </Link>
 
               ))
               }
