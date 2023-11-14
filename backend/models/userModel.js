@@ -9,19 +9,19 @@ dotenv.config();
 const userModel=new mongoose.Schema({
     name:{
         type:String,
-        require:[true,"Please enter your name."],
+        required:[true,"Please enter your name."],
         maxLength:[30,"Name should be within 30 charactrers long."],
         minLength:[4,"Name should be atleart 4 characters"]
     },
     email:{
         type:String,
-        require:[true,"Please enter your email."],
+        required:[true,"Please enter your email."],
         unique:true,
         validate:[validator.isEmail,"Please enter a valid email."]
     },
     password:{
         type:String,
-        require:[true,"Please enter your password."],
+        required:[true,"Please enter your password."],
         minLength:[8,"password should be atleart 8 characters"],
         select:false
     },
