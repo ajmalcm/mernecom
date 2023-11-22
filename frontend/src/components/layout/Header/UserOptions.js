@@ -42,7 +42,7 @@ export const UserOptions=({user})=>{
     const options=[
         {icon:<PersonIcon/>, title:"Account",func:accountHandler},
         {icon:<StoreIcon/>, title:"Home",func:homeHandler},
-        {icon:<ShoppingCartCheckoutIcon style={{color:cartItems.length>0?"#157ed2":"transparent"}}/>, title:`Cart ${cartItems.length}`, func:cartHandler},
+        {icon:<ShoppingCartCheckoutIcon style={{color:cartItems.length>0?"#157ed2":""}}/>, title:`Cart ${cartItems.length}`, func:cartHandler},
         {icon:<ListAltIcon/>, title:"Orders",func:ordersHandler},
         {icon:<ExitToAppIcon/>, title:"LogOut",func:logoutHandler},
     ]
