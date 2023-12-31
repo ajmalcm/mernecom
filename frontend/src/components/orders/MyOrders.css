@@ -1,6 +1,6 @@
 .MuiDataGrid-columnHeader{
     background-color: #157ed2;
-    padding:1vamx !important;
+    padding:1vmax !important;
 }
 .MuiDataGrid-columnHeader div{
     color:white;
